@@ -3,3 +3,39 @@
   <iframe width="620" height="515" src="https://charts.qlikcloud.com/5ca6dc692e3b12000bb93907/chart.html" frameborder="0"></iframe>
 </div>
 <h2>Ciao</h2>
+<script>
+    console.log('a');
+  var configfile = {
+	"development": {
+		"qlikConfig": {
+			"host": "ausyd-feg1.qliktech.com",
+			"prefix": "/",
+			"port": 443,
+			"isSecure": window.location.protocol === "https:"
+		},
+		"appId": "6a38dc1b-cef6-4958-b511-3d5fb33fb8a9"
+	},
+	"production": {
+		"qlikConfig": {
+			"host": "",
+			"prefix": "/",
+			"port": 443,
+			"isSecure": window.location.protocol === "https:"
+		},
+		"appId": "5504d82e-fc00-4cdc-bd0f-e4a5b6e342d6"
+	}
+}
+ 
+
+
+//Set to development or production
+var config = configfile.development;
+
+//////////////////////////////////////////////////////
+
+var prefix = window.location.pathname.substr(0, window.location.pathname.toLowerCase().lastIndexOf("/extensions") + 1);
+var baseUrl = (config.qlikConfig.isSecure ? "https://" : "http://") + config.qlikConfig.host + (config.qlikConfig.port ? ":" + config.qlikConfig.port : "") + config.qlikConfig.prefix;
+
+
+var scriptsUrl = window.location.protocol + "//" +  window.location.host + "/extensions/" + window.location.pathname.split('/')[2] +'/';
+ </script>
